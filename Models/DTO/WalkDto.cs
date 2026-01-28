@@ -11,8 +11,10 @@ namespace CRUD_2.Models.DTO
         public Guid DifficultyId { get; set; }
 
         public Guid RegionId { get; set; }
-        //Navigation Properties
-        public Difficulty Difficulty { get; set; }
-        public Region Region { get; set; }
+       
+        public string? DifficultyName { get; set; }
+        public string? RegionName { get; set; }
     }
 }
+
+    
