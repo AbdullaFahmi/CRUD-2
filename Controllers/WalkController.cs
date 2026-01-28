@@ -18,14 +18,17 @@ namespace CRUD_2.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetById(Guid id)
         {
-            var walks = dbcontext.Walks
-                                 .Include(walk => walk.Difficulty)
-                                 .Include(walk => walk.Region)
-                                 .ToList();
-
-            var walkDtos = walks.Select(walk => new WalkDto
+            var walk = dbcontext.Walks
+                                .Include(walk => walk.Difficulty)
+                                .Include(walk => walk.Region)
+                                .FirstOrDefault(w => w.Id == id);
+            if (walk == null)
+            {
+                return NotFound();
+            }
+            var walkDtos = new WalkDto
             {
                 Name = walk.Name,
                 Description = walk.Description,
@@ -35,7 +38,7 @@ namespace CRUD_2.Controllers
                 RegionId = walk.RegionId,
                 DifficultyName = walk.Difficulty.Name,
                 RegionName = walk.Region.Name
-            }).ToList();
+            };
 
             return Ok(walkDtos);
         }

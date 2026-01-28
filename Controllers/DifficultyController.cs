@@ -43,6 +43,7 @@ namespace CRUD_2.Controllers
 
             var responseDto = new DIfficultyDto 
             {
+                
                 Name = requestDto.Name 
             }; 
 
