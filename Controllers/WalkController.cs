@@ -17,8 +17,9 @@ namespace CRUD_2.Controllers
             this.dbcontext = dbcontext;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
+
         {
             var walk = dbcontext.Walks
                                 .Include(walk => walk.Difficulty)

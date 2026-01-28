@@ -45,9 +45,13 @@ namespace CRUD_2.Controllers
             {
                 
                 Name = requestDto.Name 
-            }; 
+            };
 
-            return Created();
+            return CreatedAtAction(
+    nameof(GetAll),
+    responseDto
+);
+
         }
 
     }
